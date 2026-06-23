@@ -2,7 +2,7 @@ package values
 
 import "fmt"
 
-func Scott() {
+func Values() {
 
 	fmt.Println("go" + "lang")
 

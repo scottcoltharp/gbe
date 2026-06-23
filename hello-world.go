@@ -2,10 +2,14 @@ package main
 
 import (
 	"fmt"
-	"gbe/values"
+	//"gbe/values"
+	"gbe/constants"
+	//"gbe/variables"
 )
 
 func main() {
 	fmt.Println("hello world")
-	values.Scott()
+	//values.Values()
+	//variables.Variables()
+	constants.Constants()
 }
