@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/variadic"
+	"gbe/structexample"
 )
 
 func main() {
@@ -17,6 +17,12 @@ func main() {
 	//mapsexample.MapsExample()
 	//functions.Functions()
 	//mrv.Mrv()
-	variadic.Variadic()
+	//variadic.Variadic()
+	//closure.Closure()
+	//recursion.Recursion()
+	//rangeover.RangeOver()
+	//pointers.Pointers()
+	//stringsrunes.StringsRunes()
+	structexample.StructExample()
 
 }
