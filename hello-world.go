@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/structexample"
+	"gbe/enums"
 )
 
 func main() {
@@ -23,6 +23,9 @@ func main() {
 	//rangeover.RangeOver()
 	//pointers.Pointers()
 	//stringsrunes.StringsRunes()
-	structexample.StructExample()
+	//structexample.StructExample()
+	//methods.Methods()
+	//intface.IntFace()
+	enums.Enums()
 
 }
