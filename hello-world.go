@@ -1,12 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"gbe/slicesexample"
+	"gbe/functions"
 )
 
 func main() {
-	fmt.Println("hello world")
+	//fmt.Println("hello world")
 	//values.Values()
 	//variables.Variables()
 	//constants.Constants()
@@ -14,5 +13,8 @@ func main() {
 	//ifelse.IfElse()
 	//switchexample.Switch()
 	//arrays.Arrays()
-	slicesexample.SlicesEx()
+	//slicesexample.SlicesEx()
+	//mapsexample.MapsExample()
+	functions.Functions()
+
 }
