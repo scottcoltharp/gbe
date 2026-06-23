@@ -2,14 +2,17 @@ package main
 
 import (
 	"fmt"
-	//"gbe/values"
-	"gbe/constants"
-	//"gbe/variables"
+	"gbe/slicesexample"
 )
 
 func main() {
 	fmt.Println("hello world")
 	//values.Values()
 	//variables.Variables()
-	constants.Constants()
+	//constants.Constants()
+	//forloop.ForLoop()
+	//ifelse.IfElse()
+	//switchexample.Switch()
+	//arrays.Arrays()
+	slicesexample.SlicesEx()
 }
