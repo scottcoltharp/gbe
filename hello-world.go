@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/functions"
+	"gbe/variadic"
 )
 
 func main() {
@@ -15,6 +15,8 @@ func main() {
 	//arrays.Arrays()
 	//slicesexample.SlicesEx()
 	//mapsexample.MapsExample()
-	functions.Functions()
+	//functions.Functions()
+	//mrv.Mrv()
+	variadic.Variadic()
 
 }
