@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/enums"
+	"gbe/structembed"
 )
 
 func main() {
@@ -26,6 +26,7 @@ func main() {
 	//structexample.StructExample()
 	//methods.Methods()
 	//intface.IntFace()
-	enums.Enums()
+	//enums.Enums()
+	structembed.StructEmbed()
 
 }
