@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/channels"
+	"gbe/chsync"
 )
 
 func main() {
@@ -32,6 +32,7 @@ func main() {
 	//iterator.Iterator()
 	//errorexample.ErrorExample()
 	//goroutines.GoRoutines()
-	channels.Channels()
+	//channels.Channels()
+	chsync.ChSync()
 
 }
