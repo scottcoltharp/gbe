@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/structembed"
+	"gbe/channels"
 )
 
 func main() {
@@ -27,6 +27,11 @@ func main() {
 	//methods.Methods()
 	//intface.IntFace()
 	//enums.Enums()
-	structembed.StructEmbed()
+	//structembed.StructEmbed()
+	//generics.Generics()
+	//iterator.Iterator()
+	//errorexample.ErrorExample()
+	//goroutines.GoRoutines()
+	channels.Channels()
 
 }
