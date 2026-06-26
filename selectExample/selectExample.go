@@ -11,7 +11,7 @@ func SelectExample() {
 	c2 := make(chan string)
 
 	go func() {
-		time.Sleep(1 * time.Second)
+		time.Sleep(3 * time.Second)
 		c1 <- "one"
 	}()
 	go func() {

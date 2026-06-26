@@ -1,7 +1,7 @@
 package main
 
 import (
-	selectexample "gbe/selectExample"
+	"gbe/rangechan"
 )
 
 func main() {
@@ -34,6 +34,9 @@ func main() {
 	//goroutines.GoRoutines()
 	//channels.Channels()
 	//chsync.ChSync()
-	selectexample.SelectExample()
+	//selectexample.SelectExample()
+	//timeouts.Timeouts()
+	//closechan.CloseChan()
+	rangechan.RangeChan()
 
 }
