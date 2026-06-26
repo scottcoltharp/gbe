@@ -11,6 +11,7 @@ func Channels() {
 
 	messages <- "ping"
 	messages <- "pong"
+	messages <- "pond"
 
 	fmt.Println(<-messages)
 	fmt.Println(<-messages)

@@ -3,51 +3,66 @@ package chsync
 import (
 	"fmt"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
-func loadTasks(taskCh chan int) {
-	for i := range 25 {
-		fmt.Println("adding task: ", i)
-		time.Sleep(200 * time.Millisecond)
+func loadTasks(taskCh chan<- int) {
+	for i := range 200 {
+		//time.Sleep(2 * time.Millisecond)
 		taskCh <- i
+		fmt.Println("loaded task: ", i)
 	}
 	close(taskCh)
 }
 
-func workTasks(id int, taskCh chan int, checkTask chan int, wg *sync.WaitGroup) {
-	defer wg.Done()
+func workTasks(id int, taskCh <-chan int, checkTask chan<- int, delayCounter *atomic.Int64) {
 	for item := range taskCh {
-		fmt.Printf("Worker #%d working on task: %d\n", id, item)
 		time.Sleep(1500 * time.Millisecond)
-		checkTask <- item
+		select {
+		case checkTask <- item:
+			fmt.Printf("Worker #%d completed task: %d\n", id, item)
+		default:
+			checkTask <- item // This blocks safely until a worker frees up a slot
+			fmt.Printf("Worker #%d completed task: %d\n", id, item)
+			delayCounter.Add(1)
+		}
 	}
 }
 
-func checkTasks(id int, checkTask chan int, wg *sync.WaitGroup) {
-	defer wg.Done()
+func checkTasks(id int, checkTask <-chan int) {
 	for item := range checkTask {
-		fmt.Printf("Manager #%d checking task: %d\n", id, item)
-		time.Sleep(500 * time.Millisecond)
+		time.Sleep(50 * time.Millisecond)
+		fmt.Printf("Manager #%d verified task: %d\n", id, item)
 	}
 }
 
 func ChSync() {
-	taskCh := make(chan int, 30)
+	// This single line starts the timer and defers the print until main() finishes
+	defer func(start time.Time) {
+		fmt.Println("Total execution time:", time.Since(start))
+	}(time.Now())
+
+	taskCh := make(chan int, 300)
 	checkTask := make(chan int, 30)
 	var workerWg sync.WaitGroup
 	var manageWg sync.WaitGroup
 
-	go loadTasks(taskCh)
-	for workerID := 1; workerID <= 20; workerID++ {
-		workerWg.Add(1)
-		go workTasks(workerID, taskCh, checkTask, &workerWg)
+	for managerID := 1; managerID <= 2; managerID++ {
+		manageWg.Go(func() {
+			checkTasks(managerID, checkTask)
+		})
 	}
 
-	for managerID := 1; managerID <= 10; managerID++ {
-		manageWg.Add(1)
-		go checkTasks(managerID, checkTask, &manageWg)
+	var delayCounter atomic.Int64
+	for workerID := 1; workerID <= 20; workerID++ {
+		workerWg.Go(func() {
+			workTasks(workerID, taskCh, checkTask, &delayCounter)
+		})
 	}
+
+	go loadTasks(taskCh)
+
 	go func() {
 		workerWg.Wait()
 		close(checkTask)
@@ -59,4 +74,5 @@ func ChSync() {
 	//go manager(workdone, managedone)
 	//<-managedone
 	manageWg.Wait()
+	fmt.Println("Total Delays: ", delayCounter.Load())
 }

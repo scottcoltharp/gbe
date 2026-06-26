@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gbe/chsync"
+	selectexample "gbe/selectExample"
 )
 
 func main() {
@@ -33,6 +33,7 @@ func main() {
 	//errorexample.ErrorExample()
 	//goroutines.GoRoutines()
 	//channels.Channels()
-	chsync.ChSync()
+	//chsync.ChSync()
+	selectexample.SelectExample()
 
 }
