@@ -55,7 +55,7 @@ func ChSync() {
 	}
 
 	var delayCounter atomic.Int64
-	for workerID := 1; workerID <= 20; workerID++ {
+	for workerID := 1; workerID <= 200; workerID++ {
 		workerWg.Go(func() {
 			workTasks(workerID, taskCh, checkTask, &delayCounter)
 		})

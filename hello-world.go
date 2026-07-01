@@ -1,8 +1,6 @@
 package main
 
-import (
-	"gbe/rangechan"
-)
+import "gbe/stringfunctions"
 
 func main() {
 	//fmt.Println("hello world")
@@ -37,6 +35,14 @@ func main() {
 	//selectexample.SelectExample()
 	//timeouts.Timeouts()
 	//closechan.CloseChan()
-	rangechan.RangeChan()
-
+	//rangechan.RangeChan()
+	//ratelimiting.RateLimiting()
+	//atomicexample.AtomicExample()
+	//mutexes.Mutexes()
+	//statefulgo.StatefulGo()
+	//sorting.Sorting()
+	//sortfunction.SortFunction()
+	//panicexample.PanicExample()
+	//recoverexample.RecoverExample()
+	stringfunctions.StringFunctions()
 }

@@ -1,6 +1,9 @@
 package rangechan
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func RangeChan() {
 
@@ -13,4 +16,8 @@ func RangeChan() {
 	for elem := range queue {
 		fmt.Println(elem)
 	}
+
+	timer1 := time.NewTimer(2 * time.Second)
+
+	timer1.Stop()
 }
